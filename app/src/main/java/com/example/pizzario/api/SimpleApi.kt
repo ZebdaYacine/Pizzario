@@ -7,4 +7,7 @@ interface SimpleApi {
 
     @GET("posts/1")
     suspend fun getPost():Post
+
+    @GET("posts")
+    suspend fun getPosts():List<Post>
 }

@@ -8,4 +8,8 @@ class Repository {
     suspend fun getPost():Post{
         return RetrofitInstance.api.getPost()
     }
+
+    suspend fun getPosts():List<Post>{
+        return RetrofitInstance.api.getPosts()
+    }
 }
