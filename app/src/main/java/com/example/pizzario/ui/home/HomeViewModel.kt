@@ -12,19 +12,20 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val repo :Repository):ViewModel() {
 
     val myResponse :MutableLiveData<Post>  = MutableLiveData()
-    private val allPostsAvailable :MutableLiveData<List<Post>>  = MutableLiveData()
-
-    var post=ArrayList<Post>()
+    val allPostsAvailable :MutableLiveData<List<Post>>  = MutableLiveData()
+    var posts=ArrayList<Post>()
     val TAG="HomeViewModel"
-
 
     fun getPost(){
         viewModelScope.launch {
+            posts.clear()
             myResponse.value=repo.getPost()
             repo.getPosts().also {
                 allPostsAvailable.value = it
             }
-            post!!.add(myResponse.value!!)
+            for(i in allPostsAvailable.value!!) {
+                posts!!.add(i)
+            }
         }
     }
 

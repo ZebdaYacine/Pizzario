@@ -34,10 +34,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeViewModel.getPost()
         this.activity?.let { it ->
-            homeViewModel.myResponse.observe(it, Observer {
+            homeViewModel.allPostsAvailable.observe(it, Observer {
                 binding.recycler.apply {
                     layoutManager= LinearLayoutManager(activity)
-                    adapter=PostAdapter(homeViewModel.post!!,listener = {
+                    adapter=PostAdapter(homeViewModel.posts!!,listener = {
                         homeViewModel.goToAnotherFragment() })
                 }
             })
