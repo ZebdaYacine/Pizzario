@@ -2,11 +2,13 @@ package com.example.pizzario.ui.home
 
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pizzario.model.Post
 import com.example.pizzario.repository.Repository
+import com.example.pizzario.utils.Resource
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repo :Repository):ViewModel() {
@@ -29,7 +31,7 @@ class HomeViewModel(private val repo :Repository):ViewModel() {
         }
     }
 
-    fun goToAnotherFragment(){
-        Log.d("$TAG"," goToAnotherFragment  is running")
+    fun goToAnotherFragment(post: Post){
+        Log.d("$TAG"," goToAnotherFragment  is running ${post.id}")
     }
 }
