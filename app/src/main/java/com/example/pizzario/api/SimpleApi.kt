@@ -1,6 +1,7 @@
 package com.example.pizzario.api
 
 import com.example.pizzario.model.Post
+import com.example.pizzario.utils.Resource
 import retrofit2.http.GET
 
 interface SimpleApi {
@@ -10,4 +11,5 @@ interface SimpleApi {
 
     @GET("posts")
     suspend fun getPosts():List<Post>
+
 }

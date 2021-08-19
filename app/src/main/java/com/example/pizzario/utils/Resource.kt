@@ -1,6 +1,6 @@
 package com.example.pizzario.utils
 
-data class Resource<T>(val status: Status, var data: T?, val message: String?) {
+data class Resource<T>(var status: Status, var data: T?, val message: String?) {
 
     companion object {
 

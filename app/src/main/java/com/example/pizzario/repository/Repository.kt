@@ -2,6 +2,7 @@ package com.example.pizzario.repository
 
 import com.example.pizzario.api.RetrofitInstance
 import com.example.pizzario.model.Post
+import com.example.pizzario.utils.Resource
 
 class Repository {
 
@@ -12,4 +13,5 @@ class Repository {
     suspend fun getPosts():List<Post>{
         return RetrofitInstance.api.getPosts()
     }
+
 }
