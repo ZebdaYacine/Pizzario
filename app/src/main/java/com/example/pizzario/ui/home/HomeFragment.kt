@@ -41,19 +41,35 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun observer() {
         homeViewModel.getPost()
-        homeViewModel.allPostsAvailable.observe(viewLifecycleOwner, Observer {
-            binding.recycler.apply {
-                layoutManager = LinearLayoutManager(activity)
-                adapter = PostAdapter(homeViewModel.posts!!, listener = {
-                    homeViewModel.goToAnotherFragment(it)
-                })
+        homeViewModel.isLoading.observe(this.viewLifecycleOwner, Observer {
+            when(it){
+                Status.SUCCESS->{
+                    binding.progressBar.visibility = View.GONE
+                    binding.recycler.visibility = View.VISIBLE
+                    homeViewModel.allPostsAvailable.observe(viewLifecycleOwner, Observer {
+                        binding.recycler.apply {
+                            layoutManager = LinearLayoutManager(activity)
+                            adapter = PostAdapter(homeViewModel.posts!!, listener = {
+                                homeViewModel.goToAnotherFragment(it)
+                            })
+                        }
+                    })
+                }
+                Status.LOADING->{
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.recycler.visibility = View.GONE
+                }
+                Status.ERROR->{
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(this.context,"No connection...!!", Toast.LENGTH_LONG).show()
+                }
             }
         })
     }
 
 
     private fun setObserve() {
-        homeViewModel.getPost1()
+        /*homeViewModel.getPost1()
         this.activity?.let { it ->
             homeViewModel.postsAvialable.observe(it, Observer {
                 when (it!!.status) {
@@ -81,6 +97,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 }
 
             })
-        }
+        }*/
     }
 }

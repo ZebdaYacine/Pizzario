@@ -18,9 +18,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repo: Repository) : ViewModel() {
 
-    val myResponse: MutableLiveData<Post> = MutableLiveData()
     val allPostsAvailable: MutableLiveData<List<Post>> = MutableLiveData()
-    val postsAvialable: MutableLiveData<Resource<List<Post>>> = MutableLiveData()
     var posts = ArrayList<Post>()
     val TAG = "HomeViewModel"
 
@@ -29,40 +27,21 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
     val isLoading: LiveData<Status> get() = _isLoading
 
     fun getPost() {
+        _isLoading.value=Status.LOADING
         viewModelScope.launch {
             posts.clear()
-            myResponse.value = repo.getPost()
+            allPostsAvailable.value = repo.getPosts()
             repo.getPosts().also {
-                allPostsAvailable.value = it
-            }
-            for (i in allPostsAvailable.value!!) {
-                posts!!.add(i)
+                if(it==null){
+                    _isLoading.value=Status.ERROR
+                }else{
+                    _isLoading.value=Status.SUCCESS
+                }
+                for (i in it!!) {
+                    posts!!.add(i)
+                }
             }
         }
-    }
-
-    fun getPost1() {
-        viewModelScope.launch {
-            posts.clear()
-            val posts = repo.getPosts()
-            posts.also {
-                postsAvialable.value!!.data=it
-            }
-            if(posts!=null){
-                postsAvialable.value!!.status=Status.LOADING
-            }else{
-                postsAvialable.value!!.status=Status.SUCCESS
-            }
-
-        }
-    }
-
-    private fun checkDataIsNotNull(it: List<Post>): Int {
-        var returnValue = 0
-        if (it.isEmpty() && it != null) {
-            returnValue = 1
-        }
-        return returnValue
     }
 
 
