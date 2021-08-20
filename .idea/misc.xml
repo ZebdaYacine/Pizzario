@@ -4,9 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/details_food_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/details_food_fragment.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/home1_fragment.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/home_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/home_fragment.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/Pizzario/app/src/main/res/layout/item_view.xml" value="0.5" />
       </map>
     </option>

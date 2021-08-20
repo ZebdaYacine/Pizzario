@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.detailsFood.DetailsFoodFragment">
     <data>
+
         <variable
             name="viewModel"
             type="com.example.pizzario.ui.detailsFood.DetailsViewModel" />
@@ -12,17 +13,16 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:text="@{viewModel.id}"
-        >
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="id"
-            android:text="@{viewModel.title}"
+            android:text="@={viewModel.id}"
+            android:hint="Enter Information"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#000" />
@@ -33,12 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="title"
+            android:text="@={viewModel.title}"
+            android:hint="Enter Information"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#000" />
-
-
 
     </LinearLayout>
 </layout>
