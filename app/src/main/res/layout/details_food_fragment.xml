@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.detailsFood.DetailsFoodFragment">
     <data>
         <variable
-            name="viewmodel"
-            type="com.example.pizzario.ui.home.HomeViewModel" />
+            name="viewModel"
+            type="com.example.pizzario.ui.detailsFood.DetailsViewModel" />
     </data>
 
     <LinearLayout
@@ -13,33 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:text="@{viewModel.id}"
         >
-
-
         <EditText
-            android:id="@+id/t"
+            android:id="@+id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="Enter Information"
+            android:hint="id"
+            android:text="@{viewModel.title}"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#000" />
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <ScrollView
+
+        <EditText
+            android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#E8DDDD" />
-        </ScrollView>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="title"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="#000" />
+
 
 
     </LinearLayout>

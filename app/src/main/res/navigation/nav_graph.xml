@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.pizzario.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFoodFragment"
+            app:destination="@id/detailsFoodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFoodFragment"
+        android:name="com.example.pizzario.ui.detailsFood.DetailsFoodFragment"
+        android:label="details_food_fragment"
+        tools:layout="@layout/details_food_fragment" >
+        <argument
+            android:name="food"
+            app:argType="com.example.pizzario.model.Post"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>

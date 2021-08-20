@@ -1,12 +1,10 @@
 package com.example.pizzario.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,7 +39,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun observer() {
         homeViewModel.getPost()
-        homeViewModel.isLoading.observe(this.viewLifecycleOwner, Observer {
+        homeViewModel.isLoading.observe(this.viewLifecycleOwner, Observer { it ->
             when(it){
                 Status.SUCCESS->{
                     binding.progressBar.visibility = View.GONE
@@ -50,7 +48,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                         binding.recycler.apply {
                             layoutManager = LinearLayoutManager(activity)
                             adapter = PostAdapter(homeViewModel.posts!!, listener = {
-                                homeViewModel.goToAnotherFragment(it)
+                                homeViewModel.goToDetailsFragment(it,binding.root)
                             })
                         }
                     })
@@ -100,3 +98,4 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         }*/
     }
 }
+

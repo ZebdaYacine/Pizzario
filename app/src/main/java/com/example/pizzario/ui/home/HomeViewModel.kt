@@ -1,27 +1,23 @@
 package com.example.pizzario.ui.home
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.util.Log
+
+import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation
+import com.example.pizzario.R
 import com.example.pizzario.model.Post
 import com.example.pizzario.repository.Repository
-import com.example.pizzario.utils.Resource
 import com.example.pizzario.utils.Status
-import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repo: Repository) : ViewModel() {
 
     val allPostsAvailable: MutableLiveData<List<Post>> = MutableLiveData()
     var posts = ArrayList<Post>()
-    val TAG = "HomeViewModel"
-
 
     private val _isLoading = MutableLiveData<Status>()
     val isLoading: LiveData<Status> get() = _isLoading
@@ -45,7 +41,10 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
     }
 
 
-    fun goToAnotherFragment(post: Post) {
-        Log.d("$TAG", " goToAnotherFragment  is running ${post.id}")
+    fun goToDetailsFragment(post: Post, view:View) {
+        val bundle= Bundle()
+        bundle.putParcelable("data",post)
+        Navigation.findNavController(view).
+        navigate(R.id.action_homeFragment_to_detailsFoodFragment,bundle)
     }
 }
