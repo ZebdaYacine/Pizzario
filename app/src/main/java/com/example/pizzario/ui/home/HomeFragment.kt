@@ -2,6 +2,7 @@ package com.example.pizzario.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -25,11 +26,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     private lateinit var binding: HomeFragmentBinding
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = HomeFragmentBinding.inflate(inflater, container, false)
         val repo = Repository()
         val homeViewModelFactory = HomeViewModelFactory(repo)
@@ -45,6 +42,8 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             Toast.makeText(this.context, it, Toast.LENGTH_LONG).show()
         })
     }
+
+
 
     private fun observer() {
         homeViewModel.getPost()
