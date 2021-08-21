@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import com.example.pizzario.R
 import com.example.pizzario.model.Post
 import com.example.pizzario.repository.Repository
+import com.example.pizzario.ui.login.LoginFragmentDirections
 
 class StartViewModel(private val repo:Repository):ViewModel() {
 

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.pizzario.R
 import com.example.pizzario.databinding.DetailsFoodFragmentBinding
 import com.example.pizzario.model.Post
@@ -19,6 +20,9 @@ class DetailsFoodFragment:Fragment(R.layout.details_food_fragment) {
 
     private lateinit var detailsViewModel: DetailsViewModel
     private lateinit var binding: DetailsFoodFragmentBinding
+
+    private val args: DetailsFoodFragmentArgs by navArgs()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DetailsFoodFragmentBinding.inflate(inflater, container, false)
@@ -33,9 +37,6 @@ class DetailsFoodFragment:Fragment(R.layout.details_food_fragment) {
         super.onViewCreated(view, savedInstanceState)
         val post=arguments?.get("data") as Post
         detailsViewModel.bindArgs(post)
-        detailsViewModel.title.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(this.context,it,Toast.LENGTH_LONG).show()
-        })
     }
 
 }

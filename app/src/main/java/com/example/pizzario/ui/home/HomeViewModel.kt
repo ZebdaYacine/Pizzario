@@ -28,7 +28,12 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
     init {
         categories.add(Category(1,"food"))
         categories.add(Category(2,"Drinks"))
-        categories.add(Category(2,"Fruit"))
+        categories.add(Category(3,"Fruit"))
+        categories.add(Category(4,"Cat1"))
+        categories.add(Category(5,"Cat2"))
+        categories.add(Category(6,"Cat3"))
+        categories.add(Category(7,"Cat4"))
+        categories.add(Category(8,"Cat5"))
     }
 
     val search: MutableLiveData<String> =MutableLiveData("Search")
