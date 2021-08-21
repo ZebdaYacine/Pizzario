@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.start.StartFragment">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.pizzario.ui.start.StartViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_light"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={data.checkIfLogin}"
+            android:hint="Write your 0 or 1"
+            />
+
+    </LinearLayout>
+</layout>
