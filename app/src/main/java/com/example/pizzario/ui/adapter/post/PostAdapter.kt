@@ -1,14 +1,9 @@
-package com.example.pizzario.ui.adapter
+package com.example.pizzario.ui.adapter.post
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizzario.R
 import com.example.pizzario.model.Post
-import com.example.pizzario.ui.home.HomeViewModel
 
 
 class PostAdapter(private val items:ArrayList<Post>, private val listener: (Post) -> Unit)

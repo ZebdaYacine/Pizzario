@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pizzario.R
 import com.example.pizzario.databinding.HomeFragmentBinding
 import com.example.pizzario.repository.Repository
-import com.example.pizzario.ui.adapter.PostAdapter
+import com.example.pizzario.ui.adapter.category.CategoryAdapter
+import com.example.pizzario.ui.adapter.category.CategoryViewHolder
+import com.example.pizzario.ui.adapter.post.PostAdapter
 import com.example.pizzario.utils.Status
 
 
@@ -48,14 +49,21 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 Status.SUCCESS->{
                     binding.progressBar.visibility = View.GONE
                     binding.recycler.visibility = View.VISIBLE
-                    homeViewModel.allPostsAvailable.observe(viewLifecycleOwner, Observer {
+                    binding.recycler.apply {
+                        layoutManager =
+                            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                            adapter = CategoryAdapter(homeViewModel.categories!!, listener = {
+                            homeViewModel.displayAllDishes(it, binding.root)
+                        })
+                    }
+                    /*homeViewModel.allPostsAvailable.observe(viewLifecycleOwner, Observer {
                         binding.recycler.apply {
                             layoutManager = LinearLayoutManager(activity)
                             adapter = PostAdapter(homeViewModel.posts!!, listener = {
                                 homeViewModel.goToDetailsFragment(it,binding.root)
                             })
                         }
-                    })
+                    })*/
                 }
                 Status.LOADING->{
                     binding.progressBar.visibility = View.VISIBLE

@@ -26,6 +26,13 @@
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#000" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerM"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#E8DDDD"
+            android:orientation="horizontal" />
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"

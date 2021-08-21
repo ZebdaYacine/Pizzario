@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import com.example.pizzario.R
+import com.example.pizzario.model.Category
 import com.example.pizzario.model.Post
 import com.example.pizzario.repository.Repository
 import com.example.pizzario.utils.Status
@@ -22,6 +23,13 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
 
     val allPostsAvailable: MutableLiveData<List<Post>> = MutableLiveData()
     var posts = ArrayList<Post>()
+    val categories = ArrayList<Category>()
+
+    init {
+        categories.add(Category(1,"food"))
+        categories.add(Category(2,"Drinks"))
+        categories.add(Category(2,"Fruit"))
+    }
 
     val search: MutableLiveData<String> =MutableLiveData("Search")
 
@@ -52,6 +60,10 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
         bundle.putParcelable("data",post)
         Navigation.findNavController(view).
         navigate(R.id.action_homeFragment_to_detailsFoodFragment,bundle)
+    }
+
+    fun displayAllDishes(category: Category, view:View) {
+
     }
 
 }

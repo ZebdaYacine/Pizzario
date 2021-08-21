@@ -1,4 +1,4 @@
-package com.example.pizzario.ui.adapter
+package com.example.pizzario.ui.adapter.post
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
