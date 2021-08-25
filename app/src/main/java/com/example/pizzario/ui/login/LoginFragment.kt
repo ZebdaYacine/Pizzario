@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import com.example.pizzario.R
-import com.example.pizzario.databinding.HomeFragmentBinding
 import com.example.pizzario.databinding.LoginFragmentBinding
 import com.example.pizzario.repository.Repository
-import com.example.pizzario.ui.home.HomeViewModel
-import com.example.pizzario.ui.home.HomeViewModelFactory
+import com.example.pizzario.ui.common.ViewModelFactory
+import com.example.pizzario.utils.Constants.Companion.repo
 
 class LoginFragment:Fragment(R.layout.login_fragment) {
 
@@ -24,8 +22,7 @@ class LoginFragment:Fragment(R.layout.login_fragment) {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = LoginFragmentBinding.inflate(inflater, container, false)
-        val repo = Repository()
-        val loginViewModelFactory = LoginViewModelFactory(repo)
+        val loginViewModelFactory = ViewModelFactory("LoginViewModel",repo,this.activity as AppCompatActivity)
         loginViewModel = ViewModelProvider(this, loginViewModelFactory)[LoginViewModel::class.java]
         binding.viewmodel=loginViewModel
         binding.lifecycleOwner=viewLifecycleOwner

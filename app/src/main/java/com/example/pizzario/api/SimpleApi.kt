@@ -1,7 +1,6 @@
 package com.example.pizzario.api
 
-import com.example.pizzario.model.Post
-import com.example.pizzario.utils.Resource
+import com.example.pizzario.data.model.Post
 import retrofit2.http.GET
 
 interface SimpleApi {

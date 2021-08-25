@@ -3,7 +3,7 @@ package com.example.pizzario.ui.adapter.post
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizzario.model.Post
+import com.example.pizzario.data.model.Post
 
 
 class PostAdapter(private val items:ArrayList<Post>, private val listener: (Post) -> Unit)

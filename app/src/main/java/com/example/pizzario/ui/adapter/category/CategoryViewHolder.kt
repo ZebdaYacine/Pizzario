@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pizzario.R
-import com.example.pizzario.model.Category
-import com.example.pizzario.model.Post
+import com.example.pizzario.data.model.Category
 
 class CategoryViewHolder (inflater: LayoutInflater, parent: ViewGroup)
     : RecyclerView.ViewHolder(inflater.inflate(R.layout.category_item_view,parent,false)) {

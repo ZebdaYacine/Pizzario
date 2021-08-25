@@ -1,4 +1,4 @@
-package com.example.pizzario.model
+package com.example.pizzario.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

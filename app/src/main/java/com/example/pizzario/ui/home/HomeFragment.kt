@@ -2,10 +2,10 @@ package com.example.pizzario.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pizzario.R
 import com.example.pizzario.databinding.HomeFragmentBinding
 import com.example.pizzario.repository.Repository
+import com.example.pizzario.ui.common.ViewModelFactory
 import com.example.pizzario.ui.adapter.category.CategoryAdapter
-import com.example.pizzario.ui.adapter.category.CategoryViewHolder
 import com.example.pizzario.ui.adapter.post.PostAdapter
+import com.example.pizzario.utils.Constants.Companion.repo
 import com.example.pizzario.utils.Status
 
 
@@ -28,8 +29,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = HomeFragmentBinding.inflate(inflater, container, false)
-        val repo = Repository()
-        val homeViewModelFactory = HomeViewModelFactory(repo)
+        val homeViewModelFactory = ViewModelFactory("HomeViewModel",repo,this.activity as AppCompatActivity)
         homeViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
         binding.viewmodel = homeViewModel
         binding.lifecycleOwner = viewLifecycleOwner

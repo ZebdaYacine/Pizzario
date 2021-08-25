@@ -1,12 +1,8 @@
 package com.example.pizzario.ui.detailsFood
 
-import androidx.databinding.Bindable
-import androidx.databinding.Observable
-import androidx.databinding.PropertyChangeRegistry
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pizzario.model.Post
+import com.example.pizzario.data.model.Post
 
 
 class DetailsViewModel : ViewModel() {

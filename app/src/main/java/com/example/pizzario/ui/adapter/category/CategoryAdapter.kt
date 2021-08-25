@@ -3,7 +3,7 @@ package com.example.pizzario.ui.adapter.category
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pizzario.model.Category
+import com.example.pizzario.data.model.Category
 
 
 class CategoryAdapter(private val items:ArrayList<Category>, private val listener: (Category) -> Unit)

@@ -21,7 +21,7 @@
         tools:layout="@layout/details_food_fragment" >
         <argument
             android:name="food"
-            app:argType="com.example.pizzario.model.Post"
+            app:argType="com.example.pizzario.data.model.Post"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

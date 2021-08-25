@@ -1,24 +1,24 @@
 package com.example.pizzario.ui.home
 
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.databinding.Bindable
-import androidx.databinding.Observable
-import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import com.example.pizzario.R
-import com.example.pizzario.model.Category
-import com.example.pizzario.model.Post
+import com.example.pizzario.data.PostDB
+import com.example.pizzario.data.model.Category
+import com.example.pizzario.data.model.Post
 import com.example.pizzario.repository.Repository
+import com.example.pizzario.utils.Constants
 import com.example.pizzario.utils.Status
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val repo: Repository) : ViewModel() {
+class HomeViewModel(private val repo: Repository, private val db:PostDB) : ViewModel() {
 
 
     val allPostsAvailable: MutableLiveData<List<Post>> = MutableLiveData()
@@ -45,8 +45,10 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
         _isLoading.value=Status.LOADING
         viewModelScope.launch {
             posts.clear()
-            allPostsAvailable.value = repo.getPosts()
-            repo.getPosts().also {
+            viewModelScope.launch {
+                allPostsAvailable.value = repo.getPosts(db)
+            }
+            repo.getPosts(db).also {
                 if(it==null){
                     _isLoading.value=Status.ERROR
                 }else{
@@ -68,7 +70,6 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
     }
 
     fun displayAllDishes(category: Category, view:View) {
-
     }
 
 }
