@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pizzario.R
 import com.example.pizzario.databinding.HomeFragmentBinding
@@ -61,7 +62,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                             })
                         }
                         binding.recycler.apply {
-                            layoutManager = LinearLayoutManager(activity)
+                            layoutManager = GridLayoutManager(context, 2)
                             adapter = PostAdapter(homeViewModel.posts!!, listener = {
                                 homeViewModel.goToDetailsFragment(it, binding.root)
                             })
