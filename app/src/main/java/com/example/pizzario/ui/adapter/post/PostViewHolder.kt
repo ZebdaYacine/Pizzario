@@ -16,7 +16,6 @@ class PostViewHolder (inflater: LayoutInflater, parent: ViewGroup)
 
     init {
         title=itemView.findViewById(R.id.title)
-        body=itemView.findViewById(R.id.body)
     }
     fun bind(post:Post) {
         title?.text=post.title
